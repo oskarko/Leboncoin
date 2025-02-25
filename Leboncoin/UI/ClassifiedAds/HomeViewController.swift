@@ -10,22 +10,29 @@
 import UIKit
 
 protocol HomeViewUserInterface: AnyObject {
-    func reload(with ads: [ClassifiedAd])
+    func reload(with ads: [ClassifiedAdDto])
     func showError(_ errorMessage: String)
 }
 
 final class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModel!
-    private var ads: [ClassifiedAd] = []
+    private var ads: [ClassifiedAdDto] = []
+    private var filteredAds: [ClassifiedAdDto] = []
+    
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        
+        return searchController
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(ClassifiedAdCell.self,
-                           forCellReuseIdentifier: ClassifiedAdCell.identifier)
+        tableView.register(HomeCell.self, forCellReuseIdentifier: HomeCell.identifier)
         
         return tableView
     }()
@@ -46,6 +53,18 @@ final class HomeViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
+        
+        tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    private func filterAds(for searchText: String) {
+        filteredAds = ads.filter { $0.category.lowercased().contains(searchText.lowercased()) }
+        
+        tableView.reloadData()
+    }
+    
+    private func isSearchActive() -> Bool {
+        searchController.isActive && searchController.searchBar.text != ""
     }
 }
 
@@ -54,26 +73,37 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ads.count
+        return isSearchActive() ? filteredAds.count : ads.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ClassifiedAdCell.identifier, for: indexPath) as! ClassifiedAdCell
-        let ad = ads[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
+        let ad = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
+        
         cell.configure(with: ad)
+        cell.selectionStyle = .none
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ad = ads[indexPath.row]
+        let ad = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
         viewModel.didSelectRow(at: ad)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension HomeViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterAds(for: searchController.searchBar.text ?? "")
     }
 }
 
 // MARK: - HomeViewUserInterface
 
 extension HomeViewController: HomeViewUserInterface {
-    func reload(with ads: [ClassifiedAd]) {
+    func reload(with ads: [ClassifiedAdDto]) {
         self.ads = ads
         tableView.reloadData()
     }

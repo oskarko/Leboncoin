@@ -9,22 +9,21 @@
 
 import Foundation
 
-struct APIErrorResponse: Codable {
-    var code: String?
-    var message: String?
+enum APIErrors: Error {
+    case genericError
+    case badURL
+    case invalidData
+    case invalidJSON
+}
 
-    enum CodingKeys: String, CodingKey {
-        case code
-        case message
+extension APIErrors: LocalizedError {
+    public var errorDescription: String? { // A user-friendly description of the error
+        switch self {
+        case .genericError: return "server_wrong_error".localize
+        case .badURL: return "server_wrong_url".localize
+        case .invalidData: return "server_wrong_data".localize
+        case .invalidJSON: return "server_wrong_model".localize
+
+        }
     }
-
-    init(code: String? = nil, message: String? = nil) {
-        self.code = code
-        self.message = message
-    }
-
-    static let genericError: APIErrorResponse = .init(message: "server_wrong_error".localize)
-    static let badURL: APIErrorResponse = .init(message: "server_wrong_url".localize)
-    static let invalidData: APIErrorResponse = .init(message: "server_wrong_data".localize)
-    static let invalidJSON: APIErrorResponse = .init(message: "server_wrong_model".localize)
 }

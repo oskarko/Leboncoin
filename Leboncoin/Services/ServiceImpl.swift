@@ -11,31 +11,19 @@ import Foundation
 
 final class ServiceImpl: ServiceProtocol {
     
-    func fetch<T: Decodable>(_ type: ServicePath, completion: @escaping (ResultResponse<T>) -> Void) {
+    func fetch<T: Decodable>(_ type: ServicePath) async throws -> T {
         guard let url = URL(string: type.urlString) else {
-            completion(.failure(.badURL))
-            return
+            throw APIErrors.badURL
         }
-        let session = URLSession(configuration: .default)
+
+        let (data, _) = try await URLSession.shared.data(from: url)
         
-        let task = session.dataTask(with: url) { data, response, error in
-            guard error == nil else {
-                completion(.failure(.genericError))
-                return
-            }
-            guard let data = data else {
-                completion(.failure(.invalidData))
-                return
-            }
-            
-            do {
-                let decoded = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(decoded))
-            } catch {
-                completion(.failure(.invalidJSON))
-            }
+        do {
+            let decoded = try JSONDecoder().decode(T.self, from: data)
+            return decoded
+        } catch {
+            throw APIErrors.invalidJSON
         }
-        task.resume()
     }
     
 }

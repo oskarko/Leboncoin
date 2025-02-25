@@ -10,7 +10,7 @@
 import UIKit
 
 protocol DetailsViewUserInterface: AnyObject {
-    func reload(with ad: ClassifiedAd)
+    func reload(with ad: ClassifiedAdDto)
 }
 
 final class DetailsViewController: UIViewController {
@@ -30,7 +30,7 @@ final class DetailsViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 12
         stackView.distribution = .fill
         
         return stackView
@@ -54,11 +54,31 @@ final class DetailsViewController: UIViewController {
         return label
     }()
     
+    private lazy var urgentLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = .red
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.textColor = .black
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
+    private lazy var creationDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = .gray
         label.numberOfLines = 0
         
         return label
@@ -67,7 +87,7 @@ final class DetailsViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.textColor = .gray
         label.numberOfLines = 0
         
@@ -84,7 +104,7 @@ final class DetailsViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         
-        [imageView, titleLabel, priceLabel, descriptionLabel].forEach {
+        [imageView, titleLabel, urgentLabel, priceLabel, creationDateLabel, descriptionLabel].forEach {
             stackView.addArrangedSubview($0)
         }
         scrollView.addSubview(stackView)
@@ -108,9 +128,12 @@ final class DetailsViewController: UIViewController {
 
 extension DetailsViewController: DetailsViewUserInterface {
     
-    func reload(with ad: ClassifiedAd) {
+    func reload(with ad: ClassifiedAdDto) {
         titleLabel.text = ad.title
+        urgentLabel.text = ad.isUrgent ? "URGENT" : ""
+        urgentLabel.isHidden = !ad.isUrgent
         priceLabel.text = "\(ad.price) €"
+        creationDateLabel.text = ad.creationDate
         descriptionLabel.text = ad.description
         
         if let urlString = ad.imagesUrl.small, let url = URL(string: urlString) {

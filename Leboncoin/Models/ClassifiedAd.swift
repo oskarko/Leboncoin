@@ -7,7 +7,7 @@
 //  Copyright © 2025 Oscar Rodriguez Garrucho. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct ClassifiedAd: Codable {
     let id: Int

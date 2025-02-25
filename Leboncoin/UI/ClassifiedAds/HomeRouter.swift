@@ -36,11 +36,9 @@ class HomeRouter {
         let viewController = HomeViewController()
         let router = HomeRouter(viewController: viewController)
         let service = ServiceImpl()
-        let fetchCategoriesUseCase = FetchCategoriesUseCase(service: service)
         let fetchClassifiedAdsUseCase = FetchClassifiedAdsUseCase(service: service)
         let viewModel = HomeViewModel(viewController: viewController,
                                       router: router,
-                                      fetchCategoriesUseCase: fetchCategoriesUseCase,
                                       fetchClassifiedAdsUseCase: fetchClassifiedAdsUseCase)
 
         viewController.viewModel = viewModel
@@ -50,7 +48,7 @@ class HomeRouter {
     
     // MARK: - Routes
 
-    func showDetails(for ad: ClassifiedAd) {
+    func showDetails(for ad: ClassifiedAdDto) {
         let detailsView = DetailsRouter.getViewController(for: ad)
         self.viewController?.navigationController?.pushViewController(detailsView, animated: true)
     }

@@ -10,5 +10,5 @@
 import Foundation
 
 protocol ServiceProtocol {
-    func fetch<T: Decodable>(_ type:ServicePath, completion: @escaping (ResultResponse<T>) -> Void)
+    func fetch<T: Decodable>(_ type: ServicePath) async throws -> T
 }

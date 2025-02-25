@@ -25,13 +25,13 @@ class DetailsRouter {
     
     // MARK: - Helpers
     
-    static func getViewController(for ad: ClassifiedAd) -> UIViewController {
+    static func getViewController(for ad: ClassifiedAdDto) -> UIViewController {
         let configuration = configureModule(ad: ad)
         
         return configuration.viewController
     }
     
-    private static func configureModule(ad: ClassifiedAd) -> Details {
+    private static func configureModule(ad: ClassifiedAdDto) -> Details {
         let viewController = DetailsViewController()
         let router = DetailsRouter(viewController: viewController)
         let viewModel = DetailsViewModel(viewController: viewController,
