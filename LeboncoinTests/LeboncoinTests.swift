@@ -36,3 +36,35 @@ final class LeboncoinTests: XCTestCase {
     }
 
 }
+
+// MARK: - Unit Tests
+final class ClassifiedAdsTests: XCTestCase {
+    func testFetchClassifiedAdsUseCase() {
+        let apiService = APIService()
+        let useCase = FetchClassifiedAdsUseCase(apiService: apiService)
+        let expectation = self.expectation(description: "Fetch classified ads")
+        
+        useCase.execute { ads in
+            XCTAssertFalse(ads.isEmpty)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testViewModelFetchAds() {
+        let apiService = APIService()
+        let useCase = FetchClassifiedAdsUseCase(apiService: apiService)
+        let viewModel = ClassifiedAdsViewModel(fetchClassifiedAdsUseCase: useCase)
+        let expectation = self.expectation(description: "ViewModel fetch ads")
+        
+        viewModel.onDataUpdated = {
+            XCTAssertFalse(viewModel.classifiedAds.isEmpty)
+            expectation.fulfill()
+        }
+        
+        viewModel.fetchAds()
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+}
