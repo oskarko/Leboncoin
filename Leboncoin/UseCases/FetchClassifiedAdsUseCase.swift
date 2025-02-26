@@ -9,7 +9,7 @@
 
 import Foundation
 
-final class FetchClassifiedAdsUseCase {
+class FetchClassifiedAdsUseCase {
     private let service: ServiceProtocol
     
     init(service: ServiceProtocol) {
@@ -24,15 +24,15 @@ final class FetchClassifiedAdsUseCase {
     }
     
     private func map(ads: [ClassifiedAd], categories: [Category]) -> [ClassifiedAdDto] {
-        ads.compactMap { ad in
-            ClassifiedAdDto(id: ad.id,
-                            title: ad.title,
-                            category: categories.filter({ $0.id == ad.categoryId }).first?.name ?? "",
-                            price: ad.price,
-                            isUrgent: ad.isUrgent,
-                            creationDate: ad.creationDate,
-                            imagesUrl: ad.imagesUrl,
-                            description: ad.description)
+        ads.compactMap { adv in
+            ClassifiedAdDto(id: adv.id,
+                            title: adv.title,
+                            category: categories.filter({ $0.id == adv.categoryId }).first?.name ?? "",
+                            price: adv.price,
+                            isUrgent: adv.isUrgent,
+                            creationDate: adv.creationDate,
+                            imagesUrl: adv.imagesUrl,
+                            description: adv.description)
         }
         .sorted { $0.creationDate > $1.creationDate }
         .sorted  { $0.isUrgent && !$1.isUrgent }

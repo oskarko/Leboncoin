@@ -10,17 +10,16 @@
 import UIKit
 
 protocol DetailsViewUserInterface: AnyObject {
-    func reload(with ad: ClassifiedAdDto)
+    func reload(with adv: ClassifiedAdDto)
 }
 
-final class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, DetailsViewUserInterface {
 
     var viewModel: DetailsViewModel!
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         
         return scrollView
@@ -50,6 +49,18 @@ final class DetailsViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         label.textColor = .black
         label.numberOfLines = 0
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+    private lazy var categoryLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.textAlignment = .center
         
         return label
     }()
@@ -59,6 +70,7 @@ final class DetailsViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = .red
+        label.backgroundColor = .systemOrange.withAlphaComponent(0.2)
         label.numberOfLines = 0
         
         return label
@@ -88,7 +100,7 @@ final class DetailsViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        label.textColor = .gray
+        label.textColor = .black
         label.numberOfLines = 0
         
         return label
@@ -102,9 +114,9 @@ final class DetailsViewController: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
-        [imageView, titleLabel, urgentLabel, priceLabel, creationDateLabel, descriptionLabel].forEach {
+        [imageView, titleLabel, categoryLabel, urgentLabel, priceLabel, creationDateLabel, descriptionLabel].forEach {
             stackView.addArrangedSubview($0)
         }
         scrollView.addSubview(stackView)
@@ -122,22 +134,18 @@ final class DetailsViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
-}
 
-// MARK: - DetailsViewUserInterface
-
-extension DetailsViewController: DetailsViewUserInterface {
+    // MARK: - DetailsViewUserInterface
     
-    func reload(with ad: ClassifiedAdDto) {
-        titleLabel.text = ad.title
-        urgentLabel.text = ad.isUrgent ? "URGENT" : ""
-        urgentLabel.isHidden = !ad.isUrgent
-        priceLabel.text = "\(ad.price) €"
-        creationDateLabel.text = ad.creationDate
-        descriptionLabel.text = ad.description
+    func reload(with adv: ClassifiedAdDto) {
+        titleLabel.text = adv.title
+        categoryLabel.text = adv.category
+        urgentLabel.text = adv.isUrgent ? "URGENT".localize : ""
+        urgentLabel.isHidden = !adv.isUrgent
+        priceLabel.text = "\(adv.price) €"
+        creationDateLabel.text = adv.creationDate
+        descriptionLabel.text = adv.description
         
-        if let urlString = ad.imagesUrl.small, let url = URL(string: urlString) {
-            imageView.download(from: url)
-        }
+        imageView.download(from: adv.imagesUrl.small)
     }
 }

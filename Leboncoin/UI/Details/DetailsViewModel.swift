@@ -13,17 +13,17 @@ final class DetailsViewModel {
     
     weak var viewController: DetailsViewUserInterface!
     private let router: DetailsRouter
-    private let ad: ClassifiedAdDto
+    private let adv: ClassifiedAdDto
     
     init(viewController: DetailsViewUserInterface,
          router: DetailsRouter,
-         ad: ClassifiedAdDto) {
+         adv: ClassifiedAdDto) {
         self.viewController = viewController
         self.router = router
-        self.ad = ad
+        self.adv = adv
     }
     
     func userInterfaceDidLoad() {
-        viewController.reload(with: ad)
+        viewController.reload(with: adv)
     }
 }

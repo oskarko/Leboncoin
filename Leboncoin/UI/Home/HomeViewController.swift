@@ -14,7 +14,7 @@ protocol HomeViewUserInterface: AnyObject {
     func showError(_ errorMessage: String)
 }
 
-final class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, HomeViewUserInterface {
     
     var viewModel: HomeViewModel!
     private var ads: [ClassifiedAdDto] = []
@@ -40,6 +40,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureNavigationBar(withTitle: "Leboncoin", prefersLargeTitles: false)
         setupUI()
         viewModel.userInterfaceDidLoad()
     }
@@ -66,6 +67,17 @@ final class HomeViewController: UIViewController {
     private func isSearchActive() -> Bool {
         searchController.isActive && searchController.searchBar.text != ""
     }
+    
+    // MARK: - HomeViewUserInterface
+
+    func reload(with ads: [ClassifiedAdDto]) {
+        self.ads = ads
+        tableView.reloadData()
+    }
+    
+    func showError(_ errorMessage: String) {
+        showErrorMessage(errorMessage) // From extension file
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -78,17 +90,18 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeCell.identifier, for: indexPath) as! HomeCell
-        let ad = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
+        let adv = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
         
-        cell.configure(with: ad)
+        cell.configure(with: adv)
         cell.selectionStyle = .none
+        cell.backgroundColor = indexPath.row % 2 == 0 ? .gray.withAlphaComponent(0.2) : .darkGray.withAlphaComponent(0.2)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ad = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
-        viewModel.didSelectRow(at: ad)
+        let adv = isSearchActive() ? filteredAds[indexPath.row] : ads[indexPath.row]
+        viewModel.didSelectRow(at: adv)
     }
 }
 
@@ -97,18 +110,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 extension HomeViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterAds(for: searchController.searchBar.text ?? "")
-    }
-}
-
-// MARK: - HomeViewUserInterface
-
-extension HomeViewController: HomeViewUserInterface {
-    func reload(with ads: [ClassifiedAdDto]) {
-        self.ads = ads
-        tableView.reloadData()
-    }
-    
-    func showError(_ errorMessage: String) {
-        showErrorMessage(errorMessage) // From extension file
     }
 }

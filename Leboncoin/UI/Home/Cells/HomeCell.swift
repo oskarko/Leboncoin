@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Custom TableViewCell
 
-class HomeCell: UITableViewCell {
+final class HomeCell: UITableViewCell {
     static let identifier = "HomeCell"
     
     private lazy var adImageView: UIImageView = {
@@ -26,6 +26,7 @@ class HomeCell: UITableViewCell {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .clear
         
         return imageView
     }()
@@ -99,15 +100,13 @@ class HomeCell: UITableViewCell {
         ])
     }
     
-    func configure(with ad: ClassifiedAdDto) {
-        titleLabel.text = ad.title
-        categoryLabel.text = ad.category
-        priceLabel.text = "\(ad.price) €"
+    func configure(with adv: ClassifiedAdDto) {
+        titleLabel.text = adv.title
+        categoryLabel.text = adv.category
+        priceLabel.text = "\(adv.price) €"
         
-        urgentImageView.image = ad.isUrgent ? UIImage(named: "urgent") : nil
+        urgentImageView.image = adv.isUrgent ? UIImage(named: "urgent") : nil
         
-        if let urlString = ad.imagesUrl.thumb, let url = URL(string: urlString) {
-            adImageView.download(from: url, contentMode: .scaleAspectFit)
-        }
+        adImageView.download(from: adv.imagesUrl.thumb)
     }
 }

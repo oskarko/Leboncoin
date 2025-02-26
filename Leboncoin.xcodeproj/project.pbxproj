@@ -12,7 +12,6 @@
 		55AE34C02D6DD5C60041D7DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34BF2D6DD5C60041D7DC /* HomeViewController.swift */; };
 		55AE34C52D6DD5C90041D7DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55AE34C42D6DD5C90041D7DC /* Assets.xcassets */; };
 		55AE34C82D6DD5C90041D7DC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 55AE34C72D6DD5C90041D7DC /* Base */; };
-		55AE34D32D6DD5CA0041D7DC /* LeboncoinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34D22D6DD5CA0041D7DC /* LeboncoinTests.swift */; };
 		55AE34DD2D6DD5CA0041D7DC /* LeboncoinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34DC2D6DD5CA0041D7DC /* LeboncoinUITests.swift */; };
 		55AE34DF2D6DD5CA0041D7DC /* LeboncoinUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34DE2D6DD5CA0041D7DC /* LeboncoinUITestsLaunchTests.swift */; };
 		55AE34EC2D6DD7660041D7DC /* ClassifiedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34EB2D6DD7660041D7DC /* ClassifiedAd.swift */; };
@@ -45,6 +44,20 @@
 		55AE35282D6DE8E10041D7DC /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35262D6DE8E10041D7DC /* DetailsRouter.swift */; };
 		55AE352D2D6E1DC00041D7DC /* ClassifiedAdDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE352C2D6E1DC00041D7DC /* ClassifiedAdDto.swift */; };
 		55AE352E2D6E1DC00041D7DC /* ClassifiedAdDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE352C2D6E1DC00041D7DC /* ClassifiedAdDto.swift */; };
+		55AE35342D6E75600041D7DC /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35332D6E75600041D7DC /* HomeViewModelTests.swift */; };
+		55AE35362D6E75720041D7DC /* DetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35352D6E75720041D7DC /* DetailsViewModelTests.swift */; };
+		55AE35382D6E75880041D7DC /* FetchClassifiedAdsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35372D6E75880041D7DC /* FetchClassifiedAdsUseCaseTests.swift */; };
+		55AE35392D6E76140041D7DC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34BF2D6DD5C60041D7DC /* HomeViewController.swift */; };
+		55AE353A2D6E76170041D7DC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34F42D6DD7C30041D7DC /* HomeViewModel.swift */; };
+		55AE353B2D6E76190041D7DC /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35232D6DE4BB0041D7DC /* HomeRouter.swift */; };
+		55AE353C2D6E761E0041D7DC /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34F72D6DD7DD0041D7DC /* HomeCell.swift */; };
+		55AE353F2D6E76700041D7DC /* MockHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE353E2D6E76700041D7DC /* MockHomeView.swift */; };
+		55AE35412D6E76EF0041D7DC /* MockHomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35402D6E76EF0041D7DC /* MockHomeRouter.swift */; };
+		55AE35432D6E77960041D7DC /* MockUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35422D6E77960041D7DC /* MockUseCase.swift */; };
+		55AE35442D6E7B770041D7DC /* ClassifiedAd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE34EB2D6DD7660041D7DC /* ClassifiedAd.swift */; };
+		55AE35462D6E7C710041D7DC /* MocksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35452D6E7C710041D7DC /* MocksFactory.swift */; };
+		55AE35492D6EF64E0041D7DC /* MockDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE35482D6EF64E0041D7DC /* MockDetailsView.swift */; };
+		55AE354B2D6EF6E50041D7DC /* MockDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AE354A2D6EF6E50041D7DC /* MockDetailsRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +86,6 @@
 		55AE34C72D6DD5C90041D7DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55AE34C92D6DD5C90041D7DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55AE34CE2D6DD5CA0041D7DC /* LeboncoinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeboncoinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		55AE34D22D6DD5CA0041D7DC /* LeboncoinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeboncoinTests.swift; sourceTree = "<group>"; };
 		55AE34D82D6DD5CA0041D7DC /* LeboncoinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeboncoinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55AE34DC2D6DD5CA0041D7DC /* LeboncoinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeboncoinUITests.swift; sourceTree = "<group>"; };
 		55AE34DE2D6DD5CA0041D7DC /* LeboncoinUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeboncoinUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -94,6 +106,15 @@
 		55AE35232D6DE4BB0041D7DC /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		55AE35262D6DE8E10041D7DC /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		55AE352C2D6E1DC00041D7DC /* ClassifiedAdDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifiedAdDto.swift; sourceTree = "<group>"; };
+		55AE35332D6E75600041D7DC /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		55AE35352D6E75720041D7DC /* DetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModelTests.swift; sourceTree = "<group>"; };
+		55AE35372D6E75880041D7DC /* FetchClassifiedAdsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchClassifiedAdsUseCaseTests.swift; sourceTree = "<group>"; };
+		55AE353E2D6E76700041D7DC /* MockHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeView.swift; sourceTree = "<group>"; };
+		55AE35402D6E76EF0041D7DC /* MockHomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeRouter.swift; sourceTree = "<group>"; };
+		55AE35422D6E77960041D7DC /* MockUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUseCase.swift; sourceTree = "<group>"; };
+		55AE35452D6E7C710041D7DC /* MocksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MocksFactory.swift; sourceTree = "<group>"; };
+		55AE35482D6EF64E0041D7DC /* MockDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailsView.swift; sourceTree = "<group>"; };
+		55AE354A2D6EF6E50041D7DC /* MockDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDetailsRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,7 +181,8 @@
 		55AE34D12D6DD5CA0041D7DC /* LeboncoinTests */ = {
 			isa = PBXGroup;
 			children = (
-				55AE34D22D6DD5CA0041D7DC /* LeboncoinTests.swift */,
+				55AE35322D6E751A0041D7DC /* UseCases */,
+				55AE352F2D6E74E30041D7DC /* UI */,
 			);
 			path = LeboncoinTests;
 			sourceTree = "<group>";
@@ -177,13 +199,13 @@
 		55AE34FA2D6DD8A40041D7DC /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				55AE34FB2D6DD8C00041D7DC /* ClassifiedAds */,
-				55AE35022D6DD9BE0041D7DC /* ClassifiedAdDetails */,
+				55AE34FB2D6DD8C00041D7DC /* Home */,
+				55AE35022D6DD9BE0041D7DC /* Details */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		55AE34FB2D6DD8C00041D7DC /* ClassifiedAds */ = {
+		55AE34FB2D6DD8C00041D7DC /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				55AE35002D6DD9120041D7DC /* Cells */,
@@ -191,7 +213,7 @@
 				55AE34F42D6DD7C30041D7DC /* HomeViewModel.swift */,
 				55AE34BF2D6DD5C60041D7DC /* HomeViewController.swift */,
 			);
-			path = ClassifiedAds;
+			path = Home;
 			sourceTree = "<group>";
 		};
 		55AE34FC2D6DD8D00041D7DC /* App */ = {
@@ -248,14 +270,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		55AE35022D6DD9BE0041D7DC /* ClassifiedAdDetails */ = {
+		55AE35022D6DD9BE0041D7DC /* Details */ = {
 			isa = PBXGroup;
 			children = (
 				55AE35262D6DE8E10041D7DC /* DetailsRouter.swift */,
 				55AE35062D6DDAEB0041D7DC /* DetailsViewModel.swift */,
 				55AE35032D6DD9D30041D7DC /* DetailsViewController.swift */,
 			);
-			path = ClassifiedAdDetails;
+			path = Details;
 			sourceTree = "<group>";
 		};
 		55AE35182D6DE2290041D7DC /* Commons */ = {
@@ -274,6 +296,61 @@
 				55AE35202D6DE2BA0041D7DC /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		55AE352F2D6E74E30041D7DC /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				55AE35302D6E74F80041D7DC /* Home */,
+				55AE35312D6E74FE0041D7DC /* Details */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		55AE35302D6E74F80041D7DC /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				55AE353D2D6E76560041D7DC /* Mocks */,
+				55AE35332D6E75600041D7DC /* HomeViewModelTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		55AE35312D6E74FE0041D7DC /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				55AE35472D6EF5980041D7DC /* Mocks */,
+				55AE35352D6E75720041D7DC /* DetailsViewModelTests.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		55AE35322D6E751A0041D7DC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				55AE35372D6E75880041D7DC /* FetchClassifiedAdsUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		55AE353D2D6E76560041D7DC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				55AE353E2D6E76700041D7DC /* MockHomeView.swift */,
+				55AE35402D6E76EF0041D7DC /* MockHomeRouter.swift */,
+				55AE35422D6E77960041D7DC /* MockUseCase.swift */,
+				55AE35452D6E7C710041D7DC /* MocksFactory.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		55AE35472D6EF5980041D7DC /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				55AE35482D6EF64E0041D7DC /* MockDetailsView.swift */,
+				55AE354A2D6EF6E50041D7DC /* MockDetailsRouter.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,20 +510,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AE353A2D6E76170041D7DC /* HomeViewModel.swift in Sources */,
+				55AE353C2D6E761E0041D7DC /* HomeCell.swift in Sources */,
 				55AE351C2D6DE2500041D7DC /* UIImageView+Ext.swift in Sources */,
 				55AE35222D6DE2BA0041D7DC /* UIViewController+Ext.swift in Sources */,
 				55AE34F32D6DD7AC0041D7DC /* FetchClassifiedAdsUseCase.swift in Sources */,
+				55AE353F2D6E76700041D7DC /* MockHomeView.swift in Sources */,
 				55AE352E2D6E1DC00041D7DC /* ClassifiedAdDto.swift in Sources */,
 				55AE350E2D6DE0C60041D7DC /* ServicePath.swift in Sources */,
-				55AE34D32D6DD5CA0041D7DC /* LeboncoinTests.swift in Sources */,
+				55AE35462D6E7C710041D7DC /* MocksFactory.swift in Sources */,
+				55AE35392D6E76140041D7DC /* HomeViewController.swift in Sources */,
+				55AE35342D6E75600041D7DC /* HomeViewModelTests.swift in Sources */,
+				55AE35492D6EF64E0041D7DC /* MockDetailsView.swift in Sources */,
+				55AE35442D6E7B770041D7DC /* ClassifiedAd.swift in Sources */,
+				55AE353B2D6E76190041D7DC /* HomeRouter.swift in Sources */,
 				55AE35282D6DE8E10041D7DC /* DetailsRouter.swift in Sources */,
 				55AE35112D6DE1190041D7DC /* ServiceProtocol.swift in Sources */,
 				55AE34F02D6DD78B0041D7DC /* ServiceImpl.swift in Sources */,
+				55AE35432D6E77960041D7DC /* MockUseCase.swift in Sources */,
 				55AE35082D6DDAEB0041D7DC /* DetailsViewModel.swift in Sources */,
+				55AE35362D6E75720041D7DC /* DetailsViewModelTests.swift in Sources */,
 				55AE35052D6DD9D30041D7DC /* DetailsViewController.swift in Sources */,
 				55AE35172D6DE1470041D7DC /* APIErrorResponse.swift in Sources */,
+				55AE354B2D6EF6E50041D7DC /* MockDetailsRouter.swift in Sources */,
 				55AE351F2D6DE2840041D7DC /* Strings+Ext.swift in Sources */,
+				55AE35412D6E76EF0041D7DC /* MockHomeRouter.swift in Sources */,
 				55AE350B2D6DDF760041D7DC /* Category.swift in Sources */,
+				55AE35382D6E75880041D7DC /* FetchClassifiedAdsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -667,7 +757,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscargarrucho.LeboncoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -686,7 +776,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oscargarrucho.LeboncoinTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

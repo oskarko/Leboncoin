@@ -48,9 +48,8 @@ class HomeRouter {
     
     // MARK: - Routes
 
-    func showDetails(for ad: ClassifiedAdDto) {
-        let detailsView = DetailsRouter.getViewController(for: ad)
+    func showDetails(for adv: ClassifiedAdDto) {
+        let detailsView = DetailsRouter.getViewController(for: adv)
         self.viewController?.navigationController?.pushViewController(detailsView, animated: true)
     }
-    
 }

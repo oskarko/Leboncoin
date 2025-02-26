@@ -9,7 +9,7 @@
 
 import Foundation
 
-class HomeViewModel {
+final class HomeViewModel {
     
     weak var viewController: HomeViewUserInterface!
     private let router: HomeRouter
@@ -29,8 +29,8 @@ class HomeViewModel {
         }
     }
     
-    func didSelectRow(at ad: ClassifiedAdDto) {
-        router.showDetails(for: ad)
+    func didSelectRow(at adv: ClassifiedAdDto) {
+        router.showDetails(for: adv)
     }
     
     // MARK: - Helpers
